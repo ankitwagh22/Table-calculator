@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>पाढे कॅल्कुलेटर</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        input {
+            height: 23px;
+            width: 240px;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 30px;
+            border-radius: 5px;
+        }
+
+        header {
+            width: 100%;
+            height: 80px;
+            background-color: rgb(99, 11, 99);
+        }
+
+        #title {
+            color: white;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        #btn {
+            height: 35px;
+            width: 100px;
+            margin-top: 18px;
+            font-size: 18px;
+            border: none;
+            background-color: rgb(99, 11, 99);
+            color: white;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        #btn:hover {
+            cursor: pointer;
+            background-color: rgb(138, 29, 138);
+        }
+
+        #result {
+            color: black;
+            font-size: 2rem;
+            font-family: 'Times New Roman';
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <p id="title">आकाश काळे</p>
+    </header>
+    <input type="number" id="number" placeholder="पाढे क्रमांक">
+
+    <div id="btns">
+        <button onclick="generateTable()" id="btn">पाढा द्या</button>
+        <button onclick="reloadPage()" id="btn">रेसेट करा</button>
+    </div>
+    
+
+    <div id="tableOutput"></div>
+
+    <script>
+        function generateTable() {
+      // Get the input number
+      const number = document.getElementById('number').value;
+      const outputDiv = document.getElementById('tableOutput');
+
+      // Clear previous table
+      outputDiv.innerHTML = '';
+
+      // Check if input is valid
+      if (!number || isNaN(number)) {
+        outputDiv.innerHTML = '<p>योग्य Number टाका...</p>';
+        return;
+      }
+
+      // Create the table
+      let tableHTML = `<h3> पाढा --> ${number}</h3>`;
+      tableHTML += '<table border="1" style="border-collapse: collapse; text-align: center; padding:10px">';
+      for (let i = 1; i <= 10; i++) {
+        tableHTML += `<tr><td>${number}</td><td>x</td><td>${i}</td><td>=</td><td>${number * i}</td></tr>`;
+      }
+      tableHTML += '</table>';
+
+      // Add the table to the outputDiv
+      outputDiv.innerHTML = tableHTML;
+    }
+
+    function reloadPage() {
+    location.reload();
+}
+    </script>
+</body>
+</html>
